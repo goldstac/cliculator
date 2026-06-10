@@ -6,7 +6,7 @@
     #include <windows.h>
 #endif
 
-// Function to clear the terminal screen based on the OS
+
 void clearScreen() {
 #ifdef _WIN32
     COORD topLeft = {0, 0};
