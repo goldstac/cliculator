@@ -6,7 +6,6 @@
     #include <windows.h>
 #endif
 
-
 void clearScreen() {
 #ifdef _WIN32
     COORD topLeft = {0, 0};
@@ -18,11 +17,10 @@ void clearScreen() {
     FillConsoleOutputAttribute(console, screen.wAttributes, screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
     SetConsoleCursorPosition(console, topLeft);
 #else
-    std::cout << "\x1B[2J\x1B[H"; // ANSI escape codes for POSIX
+    std::cout << "\x1B[2J\x1B[H";
 #endif
 }
 
-// Function to safely get double inputs
 double getNumber(const std::string& prompt) {
     double num;
     while (true) {
@@ -36,7 +34,6 @@ double getNumber(const std::string& prompt) {
     }
 }
 
-// Function to draw the TUI Header
 void drawHeader() {
     std::cout << "====================================\n";
     std::cout << "        C++ TUI CALCULATOR        \n";
@@ -62,7 +59,7 @@ int main() {
         if (!(std::cin >> choice)) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            continue; // Invalid menu choice, redraw
+            continue;
         }
 
         if (choice == 5) {
@@ -105,7 +102,7 @@ int main() {
         std::cout << "------------------------------------\n";
         std::cout << "Press Enter to return to the menu...";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cin.get(); // Wait for user to read result
+        std::cin.get();
     }
 
     return 0;
